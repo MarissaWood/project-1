@@ -33,11 +33,11 @@ blue.addEventListener('click', check)
 
 // create functions for when each button is pushed
 function lightUp (e) {
+  sound.play()
   this.classList.add('clicked')
   setTimeout(function () {
     e.target.classList.remove('clicked')
   }, 100)
-  sound.play()
 }
 
 function greenClick () {
@@ -139,7 +139,6 @@ function randomButton () {
 function check () {
   if (playerPattern[j] !== levelPattern[j]) {
     // restart game
-    // alert("restart game")
     document.querySelector('.level-counter').innerHTML = 1
     document.querySelector('.message').innerHTML = 'Space child, you have failed! Return to Earth.'
     level = 1
@@ -148,15 +147,12 @@ function check () {
   if (levelPattern.length === playerPattern.length) {
     console.log('level:' + level + ' passed')
     level += 1
+    if (level === 5) {
+      document.querySelector('.panel-1').style.background = "url('REZZ_HandRed.png')"
+    }
     document.querySelector('.level-counter').innerHTML = level
-    if (level % 3 === 0) {
-      document.querySelector('.message').innerHTML = ','
-    }
-    if (level % 4 === 0) {
-      document.querySelector('.message').innerHTML = 'wub, wub, wub'
-    }
     newPattern()
-    setTimeout(startGame(), 1000)
+    setTimeout(startGame(), 2000)
   }
 }// closes check function
 

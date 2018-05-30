@@ -87,7 +87,7 @@ p {
  display: grid;
  grid-gap: 5px;
  grid-template-columns: 260px 590px;
- grid-template-rows: 280px 280px;
+ grid-template-rows: 290px 270px;
  background: white; 
  padding: 10px;
  margin: auto;
