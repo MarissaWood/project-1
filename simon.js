@@ -2,24 +2,40 @@
 
 let level = 1
 let playerPattern = []
-let i = 0
+let levelPattern = ['G', 'B', 'Y', 'G']
+let i = 0 // variable for playing colors first
+let j = 0 // variable for keeping track of player input
+
+// button to start or restart game
+document.querySelector('#button').addEventListener('click', startGame)
+
+// button for instructions
+document.querySelector('#instructions').addEventListener('click', instructions)
+
+function instructions () {
+  document.querySelector('.instr').innerHTML = 'watch the lights and repeat the sequence'
+}
 
 // add event listeners for each button
 let green = document.querySelector('#green')
 green.addEventListener('click', greenClick)
 green.addEventListener('click', lightUp)
+green.addEventListener('click', check)
 
 let red = document.querySelector('#red')
 red.addEventListener('click', redClick)
 red.addEventListener('click', lightUp)
+red.addEventListener('click', check)
 
 let yellow = document.querySelector('#yellow')
 yellow.addEventListener('click', yellowClick)
 yellow.addEventListener('click', lightUp)
+yellow.addEventListener('click', check)
 
 let blue = document.querySelector('#blue')
 blue.addEventListener('click', blueClick)
 blue.addEventListener('click', lightUp)
+blue.addEventListener('click', check)
 
 // create functions for when each button is pushed
 function lightUp (e) {
@@ -45,68 +61,106 @@ function blueClick () {
   playerPattern.push('B')
 }
 
-let levelPattern = ['B', 'Y', 'R', 'G']
-
 function lightUpPlay () {
   // light up the correct tile
   if (levelPattern[i] === 'R') {
     setTimeout(function () {
-        red.classList.add('clicked')}, (i*1000+100))
+      red.classList.add('clicked')
+    }, (i * 1000 + 100))
     setTimeout(function () {
       red.classList.remove('clicked')
-    }, (i+1)*1000)
+    }, (i + 1) * 1000)
   }// closes red
 
   if (levelPattern[i] === 'G') {
     setTimeout(function () {
-        green.classList.add('clicked')}, (i*1000+100))
+      green.classList.add('clicked')
+    }, (i * 1000 + 100))
     setTimeout(function () {
       green.classList.remove('clicked')
-    }, (i+1)*1000)
+    }, (i + 1) * 1000)
   }// closes green
 
   if (levelPattern[i] === 'Y') {
     setTimeout(function () {
-        yellow.classList.add('clicked')}, (i*1000+100))
+      yellow.classList.add('clicked')
+    }, (i * 1000 + 100))
     setTimeout(function () {
       yellow.classList.remove('clicked')
-    }, (i+1)*1000)
+    }, (i + 1) * 1000)
   }// closes yellow
 
   if (levelPattern[i] === 'B') {
     setTimeout(function () {
-        blue.classList.add('clicked')}, (i*1000+100))
+      blue.classList.add('clicked')
+    }, (i * 1000 + 100))
     setTimeout(function () {
       blue.classList.remove('clicked')
-    }, (i+1)*1000)
+    }, (i + 1) * 1000)
   }// closes blue
-
 }// closes lightUpPlay
 
 function playLevel () {
   lightUpPlay()
-  //pause between buttons???
   if (i < levelPattern.length) {
     i++
-  playLevel()
+    playLevel()
+  }
+  if (i === levelPattern.length) {
+    playerPattern = []
+    i=0
   }
 }// closes playLevel
 
-// playLevel()
-
-/*
-//get player input pattern
-    //check if input is correct, advance level
-    if (playerPattern===levelPattern) {
-        level +=1
-    }
-
-//level patterns
-patterns = {
-    1: []
-    2: []
+function newPattern () {
+  // clear old pattern
+  levelPattern = []
+  // create new level pattern
+  for (let x = 0; x < 5; x++) {
+    levelPattern.push(randomButton())
+  }
 }
-*/
-// random patterns
 
-// initiate game
+function randomButton () {
+  let num = Math.floor((Math.random() * 4) + 1)
+  if (num === 1) {
+    return 'R'
+  }
+  if (num === 2) {
+    return 'B'
+  }
+  if (num === 3) {
+    return 'Y'
+  }
+  if (num === 4) {
+    return 'G'
+  }
+}
+// check if player input is correct
+function check () {
+  console.log('i=' + i)
+  console.log('j=' + j)
+  console.log('level:' + level)
+  console.log(levelPattern)
+  console.log(playerPattern)
+  if (playerPattern[j] !== levelPattern[j]) {
+      //restart game
+      alert("restart game")
+      document.querySelector('.level-counter').innerHTML = 1
+      level = 1
+  }
+  if (levelPattern.length===playerPattern.length) {
+    console.log('level:' + level + ' passed')
+    level += 1
+    document.querySelector('.level-counter').innerHTML = level
+    newPattern()
+    setTimeout(startGame(), 1000)
+  }
+    j += 1
+}// closes check function
+
+function startGame () {
+  i = 0
+  j = 0
+  playLevel()
+}
