@@ -1,5 +1,7 @@
 body {
-    background: black;
+    background: url('space.jpg');
+    background-size: cover;
+    background-position: center; 
     display: flex;
     flex-direction: column;
 
@@ -66,7 +68,9 @@ p {
 
 .center-button {
     position:absolute;
-    background-color:white;
+    background: url('rezz.jpg');
+    background-size: contain;
+    background-position: center;
     border: 10px solid lightgray;
     width:200px;
     height:200px;
@@ -87,6 +91,8 @@ p {
  background: white; 
  padding: 10px;
  margin: auto;
+
+ margin-bottom: 50px;
 }
 
 .panel-1 {
