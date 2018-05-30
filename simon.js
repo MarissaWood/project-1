@@ -1,10 +1,11 @@
 // variables for the game
-
 let level = 1
 let playerPattern = []
 let levelPattern = ['G', 'B', 'Y', 'G']
 let i = 0 // variable for playing colors first
 let j = 0 // variable for keeping track of player input
+
+let sound = document.querySelector('audio')
 
 // button to start or restart game
 document.querySelector('#button').addEventListener('click', startGame)
@@ -36,6 +37,7 @@ function lightUp (e) {
   setTimeout(function () {
     e.target.classList.remove('clicked')
   }, 100)
+  sound.play()
 }
 
 function greenClick () {
@@ -57,6 +59,7 @@ function blueClick () {
 function lightUpPlay () {
   // light up the correct tile
   if (levelPattern[i] === 'R') {
+    sound.play()
     setTimeout(function () {
       red.classList.add('clicked')
     }, (i * 1000 + 100))
@@ -66,6 +69,7 @@ function lightUpPlay () {
   }// closes red
 
   if (levelPattern[i] === 'G') {
+    sound.play()
     setTimeout(function () {
       green.classList.add('clicked')
     }, (i * 1000 + 100))
@@ -75,6 +79,7 @@ function lightUpPlay () {
   }// closes green
 
   if (levelPattern[i] === 'Y') {
+    sound.play()
     setTimeout(function () {
       yellow.classList.add('clicked')
     }, (i * 1000 + 100))
@@ -84,6 +89,7 @@ function lightUpPlay () {
   }// closes yellow
 
   if (levelPattern[i] === 'B') {
+    sound.play()
     setTimeout(function () {
       blue.classList.add('clicked')
     }, (i * 1000 + 100))
@@ -101,7 +107,7 @@ function playLevel () {
   }
   if (i === levelPattern.length) {
     playerPattern = []
-    i=0
+    i = 0
   }
 }// closes playLevel
 
@@ -131,19 +137,24 @@ function randomButton () {
 }
 // check if player input is correct
 function check () {
-  console.log(levelPattern)
   if (playerPattern[j] !== levelPattern[j]) {
-      //restart game
-      //alert("restart game")
-      document.querySelector('.level-counter').innerHTML = 1
-      document.querySelector('.message').innerHTML = "Space child, you have failed! Return to Earth."
-      level = 1
+    // restart game
+    // alert("restart game")
+    document.querySelector('.level-counter').innerHTML = 1
+    document.querySelector('.message').innerHTML = 'Space child, you have failed! Return to Earth.'
+    level = 1
   }
   j += 1
-  if (levelPattern.length===playerPattern.length) {
+  if (levelPattern.length === playerPattern.length) {
     console.log('level:' + level + ' passed')
     level += 1
     document.querySelector('.level-counter').innerHTML = level
+    if (level % 3 === 0) {
+      document.querySelector('.message').innerHTML = ','
+    }
+    if (level % 4 === 0) {
+      document.querySelector('.message').innerHTML = 'wub, wub, wub'
+    }
     newPattern()
     setTimeout(startGame(), 1000)
   }
@@ -152,5 +163,6 @@ function check () {
 function startGame () {
   i = 0
   j = 0
+  document.querySelector('.message').innerHTML = ''
   playLevel()
 }
