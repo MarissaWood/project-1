@@ -9,23 +9,29 @@
 </head>
 <body>
     <h1>Space Lights Game</h1>
-
-    <button id="instructions">instructions</button>
-    <p class='instr'></p>
+<div class="game-console">
+    <div class="panel-1">
+        <h2>Instructions:</h2>
+        <p>Watch the lights carefully and repeat the sequence by pressing the buttons</p>
+    </div>
+    <div class="panel-2">
+            <button id="button">Start game</button>
+            <div id="level-display">
+                    Level: <div class="level-counter">1</div>
+                </div>
+    </div>
+<div class="panel-3">
 <div class="game-container">
     <div id="green" class="button"></div>
     <div id="red" class="button"></div>
     <div id="yellow" class="button"></div>
     <div id="blue" class="button"></div>
     <div class="center-button">
-            <button id="button">Start game</button>
-
     </div>
 </div>
+</div>
+</div>
 
-<div id="level-display">
-        Level:<div class="level-counter"></div>
-    </div>
 
     <script src="simon.js"></script>
 </body>

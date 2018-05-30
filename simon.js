@@ -9,13 +9,6 @@ let j = 0 // variable for keeping track of player input
 // button to start or restart game
 document.querySelector('#button').addEventListener('click', startGame)
 
-// button for instructions
-document.querySelector('#instructions').addEventListener('click', instructions)
-
-function instructions () {
-  document.querySelector('.instr').innerHTML = 'watch the lights and repeat the sequence'
-}
-
 // add event listeners for each button
 let green = document.querySelector('#green')
 green.addEventListener('click', greenClick)
