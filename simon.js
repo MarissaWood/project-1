@@ -59,9 +59,9 @@ function blueClick () {
 function lightUpPlay () {
   // light up the correct tile
   if (levelPattern[i] === 'R') {
-    sound.play()
     setTimeout(function () {
       red.classList.add('clicked')
+      sound.play()
     }, (i * 1000 + 100))
     setTimeout(function () {
       red.classList.remove('clicked')
@@ -69,9 +69,9 @@ function lightUpPlay () {
   }// closes red
 
   if (levelPattern[i] === 'G') {
-    sound.play()
     setTimeout(function () {
       green.classList.add('clicked')
+      sound.play()
     }, (i * 1000 + 100))
     setTimeout(function () {
       green.classList.remove('clicked')
@@ -79,9 +79,9 @@ function lightUpPlay () {
   }// closes green
 
   if (levelPattern[i] === 'Y') {
-    sound.play()
     setTimeout(function () {
       yellow.classList.add('clicked')
+      sound.play()
     }, (i * 1000 + 100))
     setTimeout(function () {
       yellow.classList.remove('clicked')
@@ -89,9 +89,9 @@ function lightUpPlay () {
   }// closes yellow
 
   if (levelPattern[i] === 'B') {
-    sound.play()
     setTimeout(function () {
       blue.classList.add('clicked')
+      sound.play()
     }, (i * 1000 + 100))
     setTimeout(function () {
       blue.classList.remove('clicked')
@@ -152,7 +152,7 @@ function check () {
     }
     document.querySelector('.level-counter').innerHTML = level
     newPattern()
-    setTimeout(startGame(), 2000)
+    setTimeout(startGame, 1500)
   }
 }// closes check function
 
