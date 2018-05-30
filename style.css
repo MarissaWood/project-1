@@ -138,6 +138,11 @@ margin: 10px 17.5px;
     bottom: 20px;
 }
 
+.message {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+
 .level-counter {
     font-family: 'Courier New', Courier, monospace;
     display: inline;

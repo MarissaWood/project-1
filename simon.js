@@ -131,17 +131,15 @@ function randomButton () {
 }
 // check if player input is correct
 function check () {
-  console.log('i=' + i)
-  console.log('j=' + j)
-  console.log('level:' + level)
   console.log(levelPattern)
-  console.log(playerPattern)
   if (playerPattern[j] !== levelPattern[j]) {
       //restart game
-      alert("restart game")
+      //alert("restart game")
       document.querySelector('.level-counter').innerHTML = 1
+      document.querySelector('.message').innerHTML = "Space child, you have failed! Return to Earth."
       level = 1
   }
+  j += 1
   if (levelPattern.length===playerPattern.length) {
     console.log('level:' + level + ' passed')
     level += 1
@@ -149,7 +147,6 @@ function check () {
     newPattern()
     setTimeout(startGame(), 1000)
   }
-    j += 1
 }// closes check function
 
 function startGame () {
