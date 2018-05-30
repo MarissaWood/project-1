@@ -5,7 +5,10 @@ let levelPattern = ['G', 'B', 'Y', 'G']
 let i = 0 // variable for playing colors first
 let j = 0 // variable for keeping track of player input
 
-let sound = document.querySelector('audio')
+let soundRed = document.querySelectorAll('audio')[0]
+let soundGreen = document.querySelectorAll('audio')[1]
+let soundYellow = document.querySelectorAll('audio')[2]
+let soundBlue = document.querySelectorAll('audio')[3]
 
 // button to start or restart game
 document.querySelector('#button').addEventListener('click', startGame)
@@ -33,7 +36,6 @@ blue.addEventListener('click', check)
 
 // create functions for when each button is pushed
 function lightUp (e) {
-  sound.play()
   this.classList.add('clicked')
   setTimeout(function () {
     e.target.classList.remove('clicked')
@@ -42,18 +44,22 @@ function lightUp (e) {
 
 function greenClick () {
   playerPattern.push('G')
+  soundGreen.play()
 }
 
 function redClick () {
   playerPattern.push('R')
+  soundRed.play()
 }
 
 function yellowClick () {
   playerPattern.push('Y')
+  soundYellow.play()
 }
 
 function blueClick () {
   playerPattern.push('B')
+  soundBlue.play()
 }
 
 function lightUpPlay () {
@@ -61,7 +67,7 @@ function lightUpPlay () {
   if (levelPattern[i] === 'R') {
     setTimeout(function () {
       red.classList.add('clicked')
-      sound.play()
+      soundRed.play()
     }, (i * 1000 + 100))
     setTimeout(function () {
       red.classList.remove('clicked')
@@ -71,7 +77,7 @@ function lightUpPlay () {
   if (levelPattern[i] === 'G') {
     setTimeout(function () {
       green.classList.add('clicked')
-      sound.play()
+      soundGreen.play()
     }, (i * 1000 + 100))
     setTimeout(function () {
       green.classList.remove('clicked')
@@ -81,7 +87,7 @@ function lightUpPlay () {
   if (levelPattern[i] === 'Y') {
     setTimeout(function () {
       yellow.classList.add('clicked')
-      sound.play()
+      soundYellow.play()
     }, (i * 1000 + 100))
     setTimeout(function () {
       yellow.classList.remove('clicked')
@@ -91,7 +97,7 @@ function lightUpPlay () {
   if (levelPattern[i] === 'B') {
     setTimeout(function () {
       blue.classList.add('clicked')
-      sound.play()
+      soundBlue.play()
     }, (i * 1000 + 100))
     setTimeout(function () {
       blue.classList.remove('clicked')
@@ -145,7 +151,6 @@ function check () {
   }
   j += 1
   if (levelPattern.length === playerPattern.length) {
-    console.log('level:' + level + ' passed')
     level += 1
     if (level === 5) {
       document.querySelector('.panel-1').style.background = "url('REZZ_HandRed.png')"
