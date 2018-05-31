@@ -5,6 +5,7 @@ let levelPattern = ['G', 'B', 'R', 'R'] // default starting pattern
 let i = 0 // variable for playing colors first
 let j = 0 // variable for keeping track of player input
 let n = 4 // variable for number of notes
+let ascension = false //turn on/off ascension mode
 
 let soundRed = document.querySelectorAll('audio')[0]
 let soundGreen = document.querySelectorAll('audio')[1]
@@ -13,9 +14,9 @@ let soundBlue = document.querySelectorAll('audio')[3]
 let soundPsycho = document.querySelectorAll('audio')[4]
 
 // button to start or restart game in different modes
-document.querySelector('#impact').addEventListener('click', startGame)
+document.querySelector('#impact').addEventListener('click', impact)
 document.querySelector('#alien').addEventListener('click', alienMode)
-
+document.querySelector('#ascension').addEventListener('click', ascensionMode)
 
 // added psycho sample if you click Rezz face
 document.querySelector('.center-button').addEventListener('click', psycho)
@@ -127,6 +128,9 @@ function playLevel () {
 function newPattern () {
   // clear old pattern
   levelPattern = []
+  if (ascension) {
+      n+=1
+  }
   // create new level pattern
   for (let x = 0; x < n; x++) {
     levelPattern.push(randomButton())
@@ -176,12 +180,19 @@ function check () {
 function startGame () {
   i = 0
   j = 0
+  level = 1
   document.querySelector('.message').innerHTML = 'Space mom needs your help! Watch the lights carefully and repeat the sequence by pressing the buttons to transmit the coordinates. Select your mode below.'
   playLevel()
 }
 
 function psycho () {
     soundPsycho.play()
+}
+
+function impact () {
+    n = 4
+    ascension = false
+    startGame() 
 }
 
 function alienMode () {
@@ -196,9 +207,17 @@ function alienMode () {
     document.querySelector('.center-button').style.border="10px solid white"
     document.querySelector('.game-container').style.background="white"
     document.querySelector('.game-console').style.background="white"
+    n = 5
+    newPattern()
+    ascension = false
     startGame()
 }
-// extras if I have time (rename normal mode Impact mode)
+
+function ascensionMode () {
+    n = 1
+    newPattern()
+    ascension = true
+    startGame()
+}
 // code Alien mode where the player has to repeat the sequence backwards
 // start out with less notes and increase up (Ascension mode)
-// code another mode where the colors disappear (Lost mode)
