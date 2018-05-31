@@ -1,7 +1,7 @@
 // variables for the game
 let level = 1
 let playerPattern = []
-let levelPattern = ['G', 'B', 'Y', 'G']
+let levelPattern = ['G', 'B', 'Y', 'G'] // default starting pattern
 let i = 0 // variable for playing colors first
 let j = 0 // variable for keeping track of player input
 
@@ -16,50 +16,50 @@ document.querySelector('#button').addEventListener('click', startGame)
 // add event listeners for each button
 let green = document.querySelector('#green')
 green.addEventListener('click', greenClick)
-green.addEventListener('click', lightUp)
 green.addEventListener('click', check)
 
 let red = document.querySelector('#red')
 red.addEventListener('click', redClick)
-red.addEventListener('click', lightUp)
 red.addEventListener('click', check)
 
 let yellow = document.querySelector('#yellow')
 yellow.addEventListener('click', yellowClick)
-yellow.addEventListener('click', lightUp)
 yellow.addEventListener('click', check)
 
 let blue = document.querySelector('#blue')
 blue.addEventListener('click', blueClick)
-blue.addEventListener('click', lightUp)
 blue.addEventListener('click', check)
 
 // create functions for when each button is pushed
 function lightUp (e) {
-  this.classList.add('clicked')
+  e.target.classList.add('clicked')
   setTimeout(function () {
     e.target.classList.remove('clicked')
   }, 100)
 }
 
-function greenClick () {
+function greenClick (e) {
   playerPattern.push('G')
   soundGreen.play()
+  lightUp(e)
 }
 
-function redClick () {
+function redClick (e) {
   playerPattern.push('R')
   soundRed.play()
+  lightUp(e)
 }
 
-function yellowClick () {
+function yellowClick (e) {
   playerPattern.push('Y')
   soundYellow.play()
+  lightUp(e)
 }
 
-function blueClick () {
+function blueClick (e) {
   playerPattern.push('B')
   soundBlue.play()
+  lightUp(e)
 }
 
 function lightUpPlay () {
@@ -167,3 +167,8 @@ function startGame () {
   document.querySelector('.message').innerHTML = ''
   playLevel()
 }
+
+// extras if I have time (rename normal mode Impact mode)
+// code Alien mode where the player has to repeat the sequence backwards
+// start out with less notes and increase up (Ascension mode)
+// code another mode where the colors disappear (Lost mode)
