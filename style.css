@@ -4,7 +4,8 @@ body {
     background-position: center; 
     display: flex;
     flex-direction: column;
-
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 h1, h2 {
@@ -203,4 +204,8 @@ ul.icons {
 .fa-angellist {
     background: #ff6600;
     color: white;
+}
+#myBtn {
+    display: inline;
+    width: 200px;
 }

@@ -5,7 +5,7 @@ let levelPattern = ['G', 'B', 'R', 'R'] // default starting pattern
 let i = 0 // variable for playing colors first
 let j = 0 // variable for keeping track of player input
 let n = 4 // variable for number of notes
-let ascension = false //turn on/off ascension mode
+let ascension = false // turn on/off ascension mode
 
 let soundRed = document.querySelectorAll('audio')[0]
 let soundGreen = document.querySelectorAll('audio')[1]
@@ -129,7 +129,7 @@ function newPattern () {
   // clear old pattern
   levelPattern = []
   if (ascension) {
-      n+=1
+    n += 1
   }
   // create new level pattern
   for (let x = 0; x < n; x++) {
@@ -158,21 +158,21 @@ function check () {
     // restart game
     document.querySelector('.level-counter').innerHTML = 1
     document.querySelector('.message').innerHTML = 'Space child, you have failed! Return to Earth.'
-    document.querySelector('.panel-1').style.background = "black"
+    document.querySelector('.panel-1').style.background = 'black'
     level = 1
-    playerPattern=[]
+    playerPattern = []
   }
   j += 1
   if (levelPattern.length === playerPattern.length) {
     level += 1
     if (level === 5) {
       document.querySelector('.panel-1').style.background = "url('REZZ_HandRed.png')"
-      document.querySelector('.message').innerHTML = " "
-      document.querySelector('h2').innerHTML = " "
+      document.querySelector('.message').innerHTML = ' '
+      document.querySelector('h2').innerHTML = ' '
     }
     if (level === 10) {
-        document.body.style.background = "url('swirl-small.png')"
-      }
+      document.body.style.background = "url('swirl-small.png')"
+    }
     document.querySelector('.level-counter').innerHTML = level
     newPattern()
     setTimeout(startGame, 1500)
@@ -186,47 +186,63 @@ function startGame () {
 }
 
 function psycho () {
-    soundPsycho.play()
+  soundPsycho.play()
+}
+
+function restart () {
+  level = 1
+  document.querySelector('.level-counter').innerHTML = level
+  document.querySelectorAll('.button')[0].style.background = 'rgb(57, 255, 20)'
+  document.querySelectorAll('.button')[1].style.background = 'rgb(255, 69, 0)'
+  document.querySelectorAll('.button')[2].style.background = '#FFFF33'
+  document.querySelectorAll('.button')[3].style.background = 'rgb(0, 127, 255)'
+  document.querySelector('.message').innerHTML = 'Space mom needs your help! Watch the lights carefully and repeat the sequence by pressing the buttons to transmit the coordinates. Select your mode below.'
+  document.querySelector('.panel-3').style.background = 'black'
+  document.querySelector('.panel-1').style.background = 'black'
+  document.querySelector('.panel-2').style.background = 'black'
+  document.querySelector('.center-button').style.background = "black url('rezz.jpg')"
+  document.querySelector('.center-button').style.backgroundSize = 'contain'
 }
 
 function impact () {
-    n = 4
-    ascension = false
-    level = 1
-    document.querySelector('.level-counter').innerHTML = level
-    document.querySelector('.message').innerHTML = 'Space mom needs your help! Watch the lights carefully and repeat the sequence by pressing the buttons to transmit the coordinates. Select your mode below.'
-    startGame() 
+  n = 4
+  newPattern()
+  ascension = false
+  restart()
+  startGame()
 }
 
 function alienMode () {
-    for (let y=0; y<4; y++) {
-    document.querySelectorAll('.button')[y].style.background="black"
-    }
-    document.querySelector('.panel-3').style.background="linear-gradient(black, green, black)"
-    document.querySelector('.panel-1').style.background="radial-gradient(green, black)"
-    document.querySelector('.panel-2').style.background="radial-gradient(green, black)"
-    document.querySelector('.center-button').style.background="black url('green-rezz.png')"
-    document.querySelector('.center-button').style.backgroundSize="contain"
-    document.querySelector('.center-button').style.border="10px solid white"
-    document.querySelector('.game-container').style.background="white"
-    document.querySelector('.game-console').style.background="white"
-    n = 5
-    newPattern()
-    ascension = false
-    level = 1
-    document.querySelector('.level-counter').innerHTML = level
-    document.querySelector('.message').innerHTML = 'Space mom needs your help! Watch the lights carefully and repeat the sequence by pressing the buttons to transmit the coordinates. Select your mode below.'
-    startGame()
+  for (let y = 0; y < 4; y++) {
+    document.querySelectorAll('.button')[y].style.background = 'black'
+  }
+  document.querySelector('.panel-3').style.background = 'linear-gradient(black, green, black)'
+  document.querySelector('.panel-1').style.background = 'radial-gradient(green, black)'
+  document.querySelector('.panel-2').style.background = 'radial-gradient(green, black)'
+  document.querySelector('.center-button').style.background = "black url('green-rezz.png')"
+  document.querySelector('.center-button').style.backgroundSize = 'contain'
+  document.querySelector('.center-button').style.border = '10px solid white'
+  document.querySelector('.game-container').style.background = 'white'
+  document.querySelector('.game-console').style.background = 'white'
+  n = 5
+  ascension = false
+  newPattern()
+  level = 1
+  document.querySelector('.level-counter').innerHTML = level
+  document.querySelector('.message').innerHTML = 'Space mom needs your help! Watch the lights carefully and repeat the sequence by pressing the buttons to transmit the coordinates. Select your mode below.'
+  startGame()
 }
 
 function ascensionMode () {
-    n = 1
-    newPattern()
-    ascension = true
-    level = 1
-    document.querySelector('.level-counter').innerHTML = level
-    document.querySelector('.message').innerHTML = 'Space mom needs your help! Watch the lights carefully and repeat the sequence by pressing the buttons to transmit the coordinates. Select your mode below.'
-    startGame()
+  n = 1
+  newPattern()
+  ascension = true
+  level = 1
+  restart()
+  startGame()
 }
+
+// future
 // code Alien mode where the player has to repeat the sequence backwards
-// start out with less notes and increase up (Ascension mode)
+// make the notes play faster in ascension mode
+// disable mode buttons for 5 seconds after they are pushed
