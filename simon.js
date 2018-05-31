@@ -1,9 +1,10 @@
 // variables for the game
 let level = 1
 let playerPattern = []
-let levelPattern = ['G', 'B', 'Y', 'G'] // default starting pattern
+let levelPattern = ['G', 'B', 'R', 'R'] // default starting pattern
 let i = 0 // variable for playing colors first
 let j = 0 // variable for keeping track of player input
+let n = 4 // variable for number of notes
 
 let soundRed = document.querySelectorAll('audio')[0]
 let soundGreen = document.querySelectorAll('audio')[1]
@@ -16,19 +17,15 @@ document.querySelector('#button').addEventListener('click', startGame)
 // add event listeners for each button
 let green = document.querySelector('#green')
 green.addEventListener('click', greenClick)
-green.addEventListener('click', check)
 
 let red = document.querySelector('#red')
 red.addEventListener('click', redClick)
-red.addEventListener('click', check)
 
 let yellow = document.querySelector('#yellow')
 yellow.addEventListener('click', yellowClick)
-yellow.addEventListener('click', check)
 
 let blue = document.querySelector('#blue')
 blue.addEventListener('click', blueClick)
-blue.addEventListener('click', check)
 
 // create functions for when each button is pushed
 function lightUp (e) {
@@ -42,24 +39,28 @@ function greenClick (e) {
   playerPattern.push('G')
   soundGreen.play()
   lightUp(e)
+  check()
 }
 
 function redClick (e) {
   playerPattern.push('R')
   soundRed.play()
   lightUp(e)
+  check()
 }
 
 function yellowClick (e) {
   playerPattern.push('Y')
   soundYellow.play()
   lightUp(e)
+  check()
 }
 
 function blueClick (e) {
   playerPattern.push('B')
   soundBlue.play()
   lightUp(e)
+  check()
 }
 
 function lightUpPlay () {
@@ -68,40 +69,40 @@ function lightUpPlay () {
     setTimeout(function () {
       red.classList.add('clicked')
       soundRed.play()
-    }, (i * 1000 + 100))
+    }, (i * 1005 + 10))
     setTimeout(function () {
       red.classList.remove('clicked')
-    }, (i + 1) * 1000)
+    }, (i + 1) * 1005 - 100)
   }// closes red
 
   if (levelPattern[i] === 'G') {
     setTimeout(function () {
       green.classList.add('clicked')
       soundGreen.play()
-    }, (i * 1000 + 100))
+    }, (i * 1005 + 10))
     setTimeout(function () {
       green.classList.remove('clicked')
-    }, (i + 1) * 1000)
+    }, (i + 1) * 1005 - 100)
   }// closes green
 
   if (levelPattern[i] === 'Y') {
     setTimeout(function () {
       yellow.classList.add('clicked')
       soundYellow.play()
-    }, (i * 1000 + 100))
+    }, (i * 1000 + 10))
     setTimeout(function () {
       yellow.classList.remove('clicked')
-    }, (i + 1) * 1000)
+    }, (i + 1) * 1000 - 100)
   }// closes yellow
 
   if (levelPattern[i] === 'B') {
     setTimeout(function () {
       blue.classList.add('clicked')
       soundBlue.play()
-    }, (i * 1000 + 100))
+    }, (i * 1000 + 10))
     setTimeout(function () {
       blue.classList.remove('clicked')
-    }, (i + 1) * 1000)
+    }, (i + 1) * 1000 - 100)
   }// closes blue
 }// closes lightUpPlay
 
@@ -121,7 +122,7 @@ function newPattern () {
   // clear old pattern
   levelPattern = []
   // create new level pattern
-  for (let x = 0; x < 5; x++) {
+  for (let x = 0; x < n; x++) {
     levelPattern.push(randomButton())
   }
 }
@@ -147,7 +148,9 @@ function check () {
     // restart game
     document.querySelector('.level-counter').innerHTML = 1
     document.querySelector('.message').innerHTML = 'Space child, you have failed! Return to Earth.'
+    document.querySelector('.panel-1').style.background = "black"
     level = 1
+    playerPattern=[]
   }
   j += 1
   if (levelPattern.length === playerPattern.length) {
