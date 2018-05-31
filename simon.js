@@ -165,7 +165,7 @@ function check () {
       document.querySelector('.panel-1').style.background = "url('REZZ_HandRed.png')"
     }
     if (level === 10) {
-        document.querySelector('.panel-3').style.background = "url('swirl-small.png')"
+        document.body.style.background = "url('swirl-small.png')"
       }
     document.querySelector('.level-counter').innerHTML = level
     newPattern()
@@ -176,7 +176,7 @@ function check () {
 function startGame () {
   i = 0
   j = 0
-  document.querySelector('.message').innerHTML = ''
+  document.querySelector('.message').innerHTML = 'Space mom needs your help! Watch the lights carefully and repeat the sequence by pressing the buttons to transmit the coordinates. Select your mode below.'
   playLevel()
 }
 
@@ -186,8 +186,16 @@ function psycho () {
 
 function alienMode () {
     for (let y=0; y<4; y++) {
-    document.querySelectorAll('.button')[y].style.background="white"
+    document.querySelectorAll('.button')[y].style.background="black"
     }
+    document.querySelector('.panel-3').style.background="linear-gradient(black, green, black)"
+    document.querySelector('.panel-1').style.background="radial-gradient(green, black)"
+    document.querySelector('.panel-2').style.background="radial-gradient(green, black)"
+    document.querySelector('.center-button').style.background="black url('green-rezz.png')"
+    document.querySelector('.center-button').style.backgroundSize="contain"
+    document.querySelector('.center-button').style.border="10px solid white"
+    document.querySelector('.game-container').style.background="white"
+    document.querySelector('.game-console').style.background="white"
     startGame()
 }
 // extras if I have time (rename normal mode Impact mode)
