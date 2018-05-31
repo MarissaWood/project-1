@@ -10,9 +10,15 @@ let soundRed = document.querySelectorAll('audio')[0]
 let soundGreen = document.querySelectorAll('audio')[1]
 let soundYellow = document.querySelectorAll('audio')[2]
 let soundBlue = document.querySelectorAll('audio')[3]
+let soundPsycho = document.querySelectorAll('audio')[4]
 
-// button to start or restart game
-document.querySelector('#button').addEventListener('click', startGame)
+// button to start or restart game in different modes
+document.querySelector('#impact').addEventListener('click', startGame)
+document.querySelector('#alien').addEventListener('click', alienMode)
+
+
+// added psycho sample if you click Rezz face
+document.querySelector('.center-button').addEventListener('click', psycho)
 
 // add event listeners for each button
 let green = document.querySelector('#green')
@@ -69,20 +75,20 @@ function lightUpPlay () {
     setTimeout(function () {
       red.classList.add('clicked')
       soundRed.play()
-    }, (i * 1005 + 10))
+    }, (i * 1000 + 10))
     setTimeout(function () {
       red.classList.remove('clicked')
-    }, (i + 1) * 1005 - 100)
+    }, (i + 1) * 1000 - 100)
   }// closes red
 
   if (levelPattern[i] === 'G') {
     setTimeout(function () {
       green.classList.add('clicked')
       soundGreen.play()
-    }, (i * 1005 + 10))
+    }, (i * 1000 + 10))
     setTimeout(function () {
       green.classList.remove('clicked')
-    }, (i + 1) * 1005 - 100)
+    }, (i + 1) * 1000 - 100)
   }// closes green
 
   if (levelPattern[i] === 'Y') {
@@ -158,6 +164,9 @@ function check () {
     if (level === 5) {
       document.querySelector('.panel-1').style.background = "url('REZZ_HandRed.png')"
     }
+    if (level === 10) {
+        document.querySelector('.panel-3').style.background = "url('swirl-small.png')"
+      }
     document.querySelector('.level-counter').innerHTML = level
     newPattern()
     setTimeout(startGame, 1500)
@@ -171,6 +180,16 @@ function startGame () {
   playLevel()
 }
 
+function psycho () {
+    soundPsycho.play()
+}
+
+function alienMode () {
+    for (let y=0; y<4; y++) {
+    document.querySelectorAll('.button')[y].style.background="white"
+    }
+    startGame()
+}
 // extras if I have time (rename normal mode Impact mode)
 // code Alien mode where the player has to repeat the sequence backwards
 // start out with less notes and increase up (Ascension mode)
