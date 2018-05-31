@@ -224,12 +224,23 @@ function alienMode () {
   document.querySelector('.center-button').style.border = '10px solid white'
   document.querySelector('.game-container').style.background = 'white'
   document.querySelector('.game-console').style.background = 'white'
-  n = 6
+  n = 4
   ascension = false
   newPattern()
   level = 1
   document.querySelector('.level-counter').innerHTML = level
   document.querySelector('.message').innerHTML = 'Space mom needs your help! Watch the lights carefully and repeat the sequence by pressing the buttons to transmit the coordinates. Select your mode below.'
+  
+  green.removeEventListener('click', greenClick)
+  red.removeEventListener('click', redClick)
+  yellow.removeEventListener('click', yellowClick)
+  blue.removeEventListener('click', blueClick)
+
+  green.addEventListener('click', greenClickAlien)
+  red.addEventListener('click', redClickAlien)
+  yellow.addEventListener('click', yellowClickAlien)
+  blue.addEventListener('click', blueClickAlien)
+  
   startGame()
 }
 
@@ -246,3 +257,61 @@ function ascensionMode () {
 // code Alien mode where the player has to repeat the sequence backwards
 // make the notes play faster in ascension mode
 // disable mode buttons for 5 seconds after they are pushed
+
+function checkAlien () {
+    if (levelPattern[3-j] !== playerPattern[j]) {
+      // restart game
+      document.querySelector('.level-counter').innerHTML = 1
+      document.querySelector('.message').innerHTML = 'Space child, you have failed! Return to Earth.'
+      document.querySelector('.panel-1').style.background = 'black'
+      level = 1
+      playerPattern = []
+    }
+    j += 1
+    if (levelPattern.length === playerPattern.length) {
+      level += 1
+      if (level === 10) {
+        document.body.style.background = "url('swirl-small.png')"
+      }
+      document.querySelector('.level-counter').innerHTML = level
+      newPattern()
+      setTimeout(startGame, 1500)
+    }
+  }// closes checkAlien function
+
+
+function greenClickAlien (e) {
+    playerPattern.push('G')
+    soundGreen.play()
+    lightUp(e)
+    checkAlien()
+  }
+  
+  function redClickAlien (e) {
+    playerPattern.push('R')
+    soundRed.play()
+    lightUp(e)
+    checkAlien()
+  }
+  
+  function yellowClickAlien (e) {
+    playerPattern.push('Y')
+    soundYellow.play()
+    lightUp(e)
+    checkAlien()
+  }
+  
+  function blueClickAlien (e) {
+    playerPattern.push('B')
+    soundBlue.play()
+    lightUp(e)
+    checkAlien()
+  }
+  
+/*
+green.addEventListener('click', greenClick)
+red.addEventListener('click', redClick)
+yellow.addEventListener('click', yellowClick)
+blue.addEventListener('click', blueClick)
+
+*/
