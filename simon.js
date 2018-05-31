@@ -167,6 +167,8 @@ function check () {
     level += 1
     if (level === 5) {
       document.querySelector('.panel-1').style.background = "url('REZZ_HandRed.png')"
+      document.querySelector('.message').innerHTML = " "
+      document.querySelector('h2').innerHTML = " "
     }
     if (level === 10) {
         document.body.style.background = "url('swirl-small.png')"
@@ -180,8 +182,6 @@ function check () {
 function startGame () {
   i = 0
   j = 0
-  level = 1
-  document.querySelector('.message').innerHTML = 'Space mom needs your help! Watch the lights carefully and repeat the sequence by pressing the buttons to transmit the coordinates. Select your mode below.'
   playLevel()
 }
 
@@ -192,6 +192,9 @@ function psycho () {
 function impact () {
     n = 4
     ascension = false
+    level = 1
+    document.querySelector('.level-counter').innerHTML = level
+    document.querySelector('.message').innerHTML = 'Space mom needs your help! Watch the lights carefully and repeat the sequence by pressing the buttons to transmit the coordinates. Select your mode below.'
     startGame() 
 }
 
@@ -210,6 +213,9 @@ function alienMode () {
     n = 5
     newPattern()
     ascension = false
+    level = 1
+    document.querySelector('.level-counter').innerHTML = level
+    document.querySelector('.message').innerHTML = 'Space mom needs your help! Watch the lights carefully and repeat the sequence by pressing the buttons to transmit the coordinates. Select your mode below.'
     startGame()
 }
 
@@ -217,6 +223,9 @@ function ascensionMode () {
     n = 1
     newPattern()
     ascension = true
+    level = 1
+    document.querySelector('.level-counter').innerHTML = level
+    document.querySelector('.message').innerHTML = 'Space mom needs your help! Watch the lights carefully and repeat the sequence by pressing the buttons to transmit the coordinates. Select your mode below.'
     startGame()
 }
 // code Alien mode where the player has to repeat the sequence backwards
