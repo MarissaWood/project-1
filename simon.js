@@ -224,7 +224,7 @@ function alienMode () {
   document.querySelector('.center-button').style.border = '10px solid white'
   document.querySelector('.game-container').style.background = 'white'
   document.querySelector('.game-console').style.background = 'white'
-  n = 5
+  n = 6
   ascension = false
   newPattern()
   level = 1
