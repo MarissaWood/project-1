@@ -7,6 +7,7 @@ let j = 0 // variable for keeping track of player input
 let n = 4 // variable for number of notes
 let ascension = false // turn on/off ascension mode
 
+// store sounds in variables
 let soundRed = document.querySelectorAll('audio')[0]
 let soundGreen = document.querySelectorAll('audio')[1]
 let soundYellow = document.querySelectorAll('audio')[2]
@@ -46,28 +47,24 @@ function greenClick (e) {
   playerPattern.push('G')
   soundGreen.play()
   lightUp(e)
-  check()
 }
 
 function redClick (e) {
   playerPattern.push('R')
   soundRed.play()
   lightUp(e)
-  check()
 }
 
 function yellowClick (e) {
   playerPattern.push('Y')
   soundYellow.play()
   lightUp(e)
-  check()
 }
 
 function blueClick (e) {
   playerPattern.push('B')
   soundBlue.play()
   lightUp(e)
-  check()
 }
 
 function lightUpPlay () {
@@ -204,15 +201,15 @@ function restart () {
   document.querySelector('.center-button').style.background = "black url('./images/rezz.jpg')"
   document.querySelector('.center-button').style.backgroundSize = 'contain'
   // reset the check functions
-  green.removeEventListener('click', greenClickAlien)
-  red.removeEventListener('click', redClickAlien)
-  yellow.removeEventListener('click', yellowClickAlien)
-  blue.removeEventListener('click', blueClickAlien)
+  green.removeEventListener('click', checkAlien)
+  red.removeEventListener('click', checkAlien)
+  yellow.removeEventListener('click', checkAlien)
+  blue.removeEventListener('click', checkAlien)
 
-  green.addEventListener('click', greenClick)
-  red.addEventListener('click', redClick)
-  yellow.addEventListener('click', yellowClick)
-  blue.addEventListener('click', blueClick)
+  green.addEventListener('click', check)
+  red.addEventListener('click', check)
+  yellow.addEventListener('click', check)
+  blue.addEventListener('click', check)
 }
 
 function impact () {
@@ -241,16 +238,16 @@ function alienMode () {
   level = 1
   document.querySelector('.level-counter').innerHTML = level
   document.querySelector('.message').innerHTML = 'Space mom needs your help! Watch the lights carefully and repeat the sequence by pressing the buttons to transmit the coordinates. Select your mode below.'
+// switch to alien pattern check 
+  green.removeEventListener('click', check)
+  red.removeEventListener('click', check)
+  yellow.removeEventListener('click', check)
+  blue.removeEventListener('click', check)
 
-  green.removeEventListener('click', greenClick)
-  red.removeEventListener('click', redClick)
-  yellow.removeEventListener('click', yellowClick)
-  blue.removeEventListener('click', blueClick)
-
-  green.addEventListener('click', greenClickAlien)
-  red.addEventListener('click', redClickAlien)
-  yellow.addEventListener('click', yellowClickAlien)
-  blue.addEventListener('click', blueClickAlien)
+  green.addEventListener('click', checkAlien)
+  red.addEventListener('click', checkAlien)
+  yellow.addEventListener('click', checkAlien)
+  blue.addEventListener('click', checkAlien)
 
   startGame()
 }
@@ -291,38 +288,3 @@ function checkAlien () {
     setTimeout(startGame, 1500)
   }
 }// closes checkAlien function
-
-function greenClickAlien (e) {
-  playerPattern.push('G')
-  soundGreen.play()
-  lightUp(e)
-  checkAlien()
-}
-
-function redClickAlien (e) {
-  playerPattern.push('R')
-  soundRed.play()
-  lightUp(e)
-  checkAlien()
-}
-
-function yellowClickAlien (e) {
-  playerPattern.push('Y')
-  soundYellow.play()
-  lightUp(e)
-  checkAlien()
-}
-
-function blueClickAlien (e) {
-  playerPattern.push('B')
-  soundBlue.play()
-  lightUp(e)
-  checkAlien()
-}
-
-/*
-green.addEventListener('click', greenClick)
-red.addEventListener('click', redClick)
-yellow.addEventListener('click', yellowClick)
-blue.addEventListener('click', blueClick)
-*/
