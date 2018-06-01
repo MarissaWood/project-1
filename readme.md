@@ -17,10 +17,15 @@ Each button on the game board has several functions tied to it.  When a button i
 
 Everytime a button is clicked, it checks to see if it matches the level pattern array.  If it doesn't match, the game starts over.  The game board displays a message and the level goes back to 1.  If the player array matches the level array, the player moves on to the next level and a new random pattern is generated.  
 
+## Install instructions:
+If you want to install this game locally, simply fork and clone the repo and open the index.html file.  
+
 ## Unsolved problems:
 If a player pushes the game mode buttons several times, a new pattern is generated and played.  If this happens is quick succession, the patterns overlap and the play can't tell which one is the current pattern that the game will check.
 
 ## Future features:
 I plan to expand on these game modes.  Each mode is named after a Rezz song, so I plan on switching out the sounds the buttons make for each mode based on the song.  Also, if I can get permission, I would like to have the full song play if the player gets to level 20.
+
+I plan to add easy-medium-hard settings for Impact Mode and Alien.  Easy with keep the pattern to four buttons each level, medium will increase it to seven and hard will increase it to ten. 
 
 I also plan to deactivate the game start buttons for five seconds after one is pushed to prevent overlapping patterns.  
