@@ -1,5 +1,5 @@
 body {
-    background: url('space.jpg');
+    background: url('./images/space.jpg');
     background-size: cover;
     background-position: center; 
     display: flex;
@@ -69,7 +69,7 @@ p {
 
 .center-button {
     position:absolute;
-    background: url('rezz.jpg');
+    background: url('./images/rezz.jpg');
     background-size: contain;
     background-position: center;
     border: 10px solid lightgray;

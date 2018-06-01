@@ -172,12 +172,12 @@ function check () {
   if (levelPattern.length === playerPattern.length) {
     level += 1
     if (level === 5) {
-      document.querySelector('.panel-1').style.background = "url('REZZ_HandRed.png')"
+      document.querySelector('.panel-1').style.background = "url('./images/REZZ_HandRed.png')"
       document.querySelector('.message').innerHTML = ' '
       document.querySelector('h2').innerHTML = ' '
     }
     if (level === 10) {
-      document.body.style.background = "url('swirl-small.png')"
+      document.body.style.background = "url('./images/swirl-small.png')"
     }
     document.querySelector('.level-counter').innerHTML = level
     newPattern()
@@ -201,7 +201,7 @@ function restart () {
   document.querySelector('.panel-3').style.background = 'black'
   document.querySelector('.panel-1').style.background = 'black'
   document.querySelector('.panel-2').style.background = 'black'
-  document.querySelector('.center-button').style.background = "black url('rezz.jpg')"
+  document.querySelector('.center-button').style.background = "black url('./images/rezz.jpg')"
   document.querySelector('.center-button').style.backgroundSize = 'contain'
   // reset the check functions
   green.removeEventListener('click', greenClickAlien)
@@ -230,7 +230,7 @@ function alienMode () {
   document.querySelector('.panel-3').style.background = 'linear-gradient(black, green, black)'
   document.querySelector('.panel-1').style.background = 'radial-gradient(green, black)'
   document.querySelector('.panel-2').style.background = 'radial-gradient(green, black)'
-  document.querySelector('.center-button').style.background = "black url('green-rezz.png')"
+  document.querySelector('.center-button').style.background = "black url('./images/green-rezz.png')"
   document.querySelector('.center-button').style.backgroundSize = 'contain'
   document.querySelector('.center-button').style.border = '10px solid white'
   document.querySelector('.game-container').style.background = 'white'
@@ -264,9 +264,12 @@ function ascensionMode () {
   startGame()
 }
 
-// future
+// futuregame changes: 
+// change out the sounds for each mode
 // make the notes play faster in ascension mode
 // disable mode buttons for 5 seconds after they are pushed
+// add the option for a different number of notes in impact mode and alien mode
+// make the full songs play after level 20 ???
 
 function checkAlien () {
   if (levelPattern[n - 1 - j] !== playerPattern[j]) {
@@ -281,7 +284,7 @@ function checkAlien () {
   if (levelPattern.length === playerPattern.length) {
     level += 1
     if (level === 10) {
-      document.body.style.background = "url('swirl-small.png')"
+      document.body.style.background = "url('./images/swirl-small.png')"
     }
     document.querySelector('.level-counter').innerHTML = level
     newPattern()
@@ -322,5 +325,4 @@ green.addEventListener('click', greenClick)
 red.addEventListener('click', redClick)
 yellow.addEventListener('click', yellowClick)
 blue.addEventListener('click', blueClick)
-
 */
