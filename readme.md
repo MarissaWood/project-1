@@ -1,5 +1,7 @@
 # Selector 
 
+![image](https://user-images.githubusercontent.com/26101268/40845534-00031f72-6585-11e8-86fa-1918678d058a.png)
+
 ## Description
 Selector is based on the game 'Simon'.  I themed it around my favorite EDM Producer, Rezz.  Selector is the name of one of her songs and each mode is named after another song. For each level, a sequence is played on the game board and the player has to repeat it back to progress to the next level.  
 
