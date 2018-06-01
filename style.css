@@ -85,14 +85,14 @@ p {
 }
 
 .game-console {
- display: grid;
- grid-gap: 5px;
- grid-template-columns: 260px 590px;
- grid-template-rows: 290px 270px;
- background: white; 
- padding: 10px;
- margin: auto;
- margin-bottom: 50px;
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: 260px 590px;
+    grid-template-rows: 290px 270px;
+    background: white; 
+    padding: 10px;
+    margin: auto;
+    margin-bottom: 50px;
 }
 
 
@@ -100,17 +100,17 @@ p {
     grid-row:1;
     grid-column: 1;
     background: black;
-    }
+}
 
 
 .panel-2 {
-grid-column: 1;
-grid-row: 2;
-background: black;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-align-content: center;
+    grid-column: 1;
+    grid-row: 2;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
 }
 
 .panel-3 {
@@ -120,16 +120,16 @@ align-content: center;
 }
 
 #impact, #alien, #ascension {
-padding: 10px 20px;
-text-align: center;
-font-family: 'Courier New', Courier, monospace;
-font-size: 30px;
-margin: 5px 17.5px;
+    padding: 10px 20px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    margin: 5px 17.5px;
 }
 
 .clicked {
     opacity: 0.7;
-    box-shadow: inset 0 0 10px 5px #000000;
+    box-shadow: inset 0 0 10px 10px #000000;
 }
 
 #level-display {
@@ -161,7 +161,7 @@ margin: 5px 17.5px;
 li {
     list-style-type: none;
     display: inline;
-    margin: 10px, 20px;
+    margin: 10pxs;
     color: rgb(70,70,70);
 }
 
@@ -174,28 +174,27 @@ ul.icons {
 
 .fa {
     padding: 20px;
-    font-size: 22px;
+    font-size: 20px;
     width: 20px;
     text-align: center;
     text-decoration: none;
     margin: 5px 2px;
     border-radius: 50%;
-  }
+}
   
 .fa:hover {
-      opacity: 0.7;
-  }
+    opacity: 0.7;
+}
   
 .fa-github {
     background: #333;
     color: white;
-  }
-  
+}
   
 .fa-linkedin {
     background: #007bb5;
     color: white;
-  }
+}
   
 .fa-twitter {
     background: #55ACEE;
