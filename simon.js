@@ -35,6 +35,8 @@ yellow.addEventListener('click', yellowClick)
 let blue = document.querySelector('#blue')
 blue.addEventListener('click', blueClick)
 
+let buttons = [green, red, blue, yellow] //put buttons into array
+
 // create functions for when each button is pushed
 function lightUp (e) {
   e.target.classList.add('clicked')
@@ -201,15 +203,8 @@ function restart () {
   document.querySelector('.center-button').style.background = "black url('./images/rezz.jpg')"
   document.querySelector('.center-button').style.backgroundSize = 'contain'
   // reset the check functions
-  green.removeEventListener('click', checkAlien)
-  red.removeEventListener('click', checkAlien)
-  yellow.removeEventListener('click', checkAlien)
-  blue.removeEventListener('click', checkAlien)
-
-  green.addEventListener('click', check)
-  red.addEventListener('click', check)
-  yellow.addEventListener('click', check)
-  blue.addEventListener('click', check)
+  buttons.forEach(function(button) {button.removeEventListener('click', checkAlien)})
+  buttons.forEach(function(button) {button.addEventListener('click', check)})
 }
 
 function impact () {
@@ -239,16 +234,8 @@ function alienMode () {
   document.querySelector('.level-counter').innerHTML = level
   document.querySelector('.message').innerHTML = 'Space mom needs your help! Watch the lights carefully and repeat the sequence by pressing the buttons to transmit the coordinates. Select your mode below.'
 // switch to alien pattern check 
-  green.removeEventListener('click', check)
-  red.removeEventListener('click', check)
-  yellow.removeEventListener('click', check)
-  blue.removeEventListener('click', check)
-
-  green.addEventListener('click', checkAlien)
-  red.addEventListener('click', checkAlien)
-  yellow.addEventListener('click', checkAlien)
-  blue.addEventListener('click', checkAlien)
-
+  buttons.forEach(function(button) {button.removeEventListener('click', check)})
+  buttons.forEach(function(button) {button.addEventListener('click', checkAlien)})
   startGame()
 }
 
