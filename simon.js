@@ -14,6 +14,7 @@ let soundYellow = document.querySelectorAll('audio')[2]
 let soundBlue = document.querySelectorAll('audio')[3]
 let soundPsycho = document.querySelectorAll('audio')[4]
 
+
 // button to start or restart game in different modes
 document.querySelector('#impact').addEventListener('click', impact)
 document.querySelector('#alien').addEventListener('click', alienMode)
@@ -21,18 +22,15 @@ document.querySelector('#ascension').addEventListener('click', ascensionMode)
 
 // added psycho sample if you click Rezz face
 document.querySelector('.center-button').addEventListener('click', psycho)
-
-// add event listeners for each button
+// create buttons 
 let green = document.querySelector('#green')
-green.addEventListener('click', greenClick)
-
 let red = document.querySelector('#red')
-red.addEventListener('click', redClick)
-
 let yellow = document.querySelector('#yellow')
-yellow.addEventListener('click', yellowClick)
-
 let blue = document.querySelector('#blue')
+// add event listeners for each button
+green.addEventListener('click', greenClick)
+red.addEventListener('click', redClick)
+yellow.addEventListener('click', yellowClick)
 blue.addEventListener('click', blueClick)
 
 let buttons = [green, red, blue, yellow] //put buttons into array
@@ -47,24 +45,28 @@ function lightUp (e) {
 
 function greenClick (e) {
   playerPattern.push('G')
+  soundGreen.currentTime = 0
   soundGreen.play()
   lightUp(e)
 }
 
 function redClick (e) {
   playerPattern.push('R')
+  soundRed.currentTime = 0
   soundRed.play()
   lightUp(e)
 }
 
 function yellowClick (e) {
   playerPattern.push('Y')
+  soundYellow.currentTime = 0
   soundYellow.play()
   lightUp(e)
 }
 
 function blueClick (e) {
   playerPattern.push('B')
+  soundBlue.currentTime = 0
   soundBlue.play()
   lightUp(e)
 }
@@ -74,6 +76,7 @@ function lightUpPlay () {
   if (levelPattern[i] === 'R') {
     setTimeout(function () {
       red.classList.add('clicked')
+      soundRed.currentTime = 0
       soundRed.play()
     }, (i * 1000 + 10))
     setTimeout(function () {
@@ -84,6 +87,7 @@ function lightUpPlay () {
   if (levelPattern[i] === 'G') {
     setTimeout(function () {
       green.classList.add('clicked')
+      soundGreen.currentTime = 0
       soundGreen.play()
     }, (i * 1000 + 10))
     setTimeout(function () {
@@ -94,6 +98,7 @@ function lightUpPlay () {
   if (levelPattern[i] === 'Y') {
     setTimeout(function () {
       yellow.classList.add('clicked')
+      soundYellow.currentTime = 0
       soundYellow.play()
     }, (i * 1000 + 10))
     setTimeout(function () {
@@ -104,6 +109,7 @@ function lightUpPlay () {
   if (levelPattern[i] === 'B') {
     setTimeout(function () {
       blue.classList.add('clicked')
+      soundBlue.currentTime = 0
       soundBlue.play()
     }, (i * 1000 + 10))
     setTimeout(function () {
