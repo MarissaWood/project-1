@@ -17,9 +17,10 @@ Each button on the game board has several functions tied to it.  When a button i
 
 Everytime a button is clicked, it checks to see if it matches the level pattern array.  If it doesn't match, the game starts over.  The game board displays a message and the level goes back to 1.  If the player array matches the level array, the player moves on to the next level and a new random pattern is generated. 
 
+An example for one of the buttons:
+
 ```js
 let green = document.querySelector('#green')
-
 let soundGreen = document.querySelectorAll('audio')[1]
 
 green.addEventListener('click', greenClick)
@@ -40,7 +41,9 @@ function greenClick (e) {
 ``` 
 
 ## Install instructions:
-If you want to install this game locally, simply fork and clone the repo and open the index.html file.  
+If you want to install this game locally, simply fork and clone the repo and open the index.html file.   
+
+The game can also be accessed at [https://marissawood.github.io/project-1/](https://marissawood.github.io/project-1/) 
 
 ## Unsolved problems:
 If a player pushes the game mode buttons several times, a new pattern is generated and played.  If this happens is quick succession, the patterns overlap and the play can't tell which one is the current pattern that the game will check.
