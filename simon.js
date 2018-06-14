@@ -14,34 +14,53 @@ let soundYellow = document.querySelectorAll('audio')[2]
 let soundBlue = document.querySelectorAll('audio')[3]
 let soundPsycho = document.querySelectorAll('audio')[4]
 
+// button to start or restart game in different modes and place into an array
+startButtons = []
+startButtons.push(document.querySelector('#impact'))
+startButtons.push(document.querySelector('#alien'))
+startButtons.push(document.querySelector('#ascension'))
 
-// button to start or restart game in different modes
-document.querySelector('#impact').addEventListener('click', impact)
-document.querySelector('#alien').addEventListener('click', alienMode)
-document.querySelector('#ascension').addEventListener('click', ascensionMode)
+function activateStart () {
+  startButtons[0].addEventListener('click', impact)
+  startButtons[1].addEventListener('click', alienMode)
+  startButtons[2].addEventListener('click', ascensionMode)
+}
+
+activateStart()
+
+function deactivate () {
+  startButtons[0].removeEventListener('click', impact)
+  startButtons[1].removeEventListener('click', alienMode)
+  startButtons[2].removeEventListener('click', ascensionMode)
+  setTimeout(activateStart, 5000)
+}
 
 // added psycho sample if you click Rezz face
 document.querySelector('.center-button').addEventListener('click', psycho)
-// create buttons 
+// create buttons
 let green = document.querySelector('#green')
 let red = document.querySelector('#red')
 let yellow = document.querySelector('#yellow')
 let blue = document.querySelector('#blue')
+
 // add event listeners for each button
 green.addEventListener('click', greenClick)
 red.addEventListener('click', redClick)
 yellow.addEventListener('click', yellowClick)
 blue.addEventListener('click', blueClick)
 
-let buttons = [green, red, blue, yellow] //put buttons into array
+let buttons = [green, red, blue, yellow] // put buttons into array
 
 // create functions for when each button is pushed
 function lightUp (e) {
   e.target.classList.add('clicked')
-  setTimeout(function () {
-    e.target.classList.remove('clicked')
-  }, 100)
 }
+
+function removeTransition (e) {
+  e.target.classList.remove('clicked')
+}
+
+buttons.forEach(button => button.addEventListener('transitionend', removeTransition))
 
 function greenClick (e) {
   playerPattern.push('G')
@@ -209,8 +228,8 @@ function restart () {
   document.querySelector('.center-button').style.background = "black url('./images/rezz.jpg')"
   document.querySelector('.center-button').style.backgroundSize = 'contain'
   // reset the check functions
-  buttons.forEach(function(button) {button.removeEventListener('click', checkAlien)})
-  buttons.forEach(function(button) {button.addEventListener('click', check)})
+  buttons.forEach(function (button) { button.removeEventListener('click', checkAlien) })
+  buttons.forEach(function (button) { button.addEventListener('click', check) })
 }
 
 function impact () {
@@ -219,6 +238,7 @@ function impact () {
   ascension = false
   restart()
   startGame()
+  setTimeout(deactivate, 10)
 }
 
 function alienMode () {
@@ -239,10 +259,11 @@ function alienMode () {
   level = 1
   document.querySelector('.level-counter').innerHTML = level
   document.querySelector('.message').innerHTML = 'Space mom needs your help! Watch the lights carefully and repeat the sequence by pressing the buttons to transmit the coordinates. Select your mode below.'
-// switch to alien pattern check 
-  buttons.forEach(function(button) {button.removeEventListener('click', check)})
-  buttons.forEach(function(button) {button.addEventListener('click', checkAlien)})
+  // switch to alien pattern check
+  buttons.forEach(function (button) { button.removeEventListener('click', check) })
+  buttons.forEach(function (button) { button.addEventListener('click', checkAlien) })
   startGame()
+  setTimeout(deactivate, 10)
 }
 
 function ascensionMode () {
@@ -252,9 +273,10 @@ function ascensionMode () {
   level = 1
   restart()
   startGame()
+  setTimeout(deactivate, 10)
 }
 
-// futuregame changes: 
+// futuregame changes:
 // change out the sounds for each mode
 // make the notes play faster in ascension mode
 // disable mode buttons for 5 seconds after they are pushed

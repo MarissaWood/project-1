@@ -1,4 +1,14 @@
 // this is my attempt at making my code DRY-er (very much a work in progress)
+/*
+let level = 1
+let levelPattern = ['G', 'B', 'R', 'R'] // default starting pattern
+let i = 0 // variable for playing colors first
+let j = 0 // variable for keeping track of player input
+let n = 4 // variable for number of notes
+let ascension = false
+*/
+
+let playerPattern = []
 
 class Button {
   constructor (object, color, sound) {
@@ -21,18 +31,10 @@ class Button {
   clicked (e) {
     playerPattern.push(this.color)
     console.log(this.color)
-    //this.playSound()
-    //this.lightUp(e)
+    // this.playSound()
+    // this.lightUp(e)
   }
 }
-
-let level = 1
-let playerPattern = []
-let levelPattern = ['G', 'B', 'R', 'R'] // default starting pattern
-let i = 0 // variable for playing colors first
-let j = 0 // variable for keeping track of player input
-let n = 4 // variable for number of notes
-let ascension = false
 
 const red = new Button(document.querySelector('#red'), 'R', document.querySelectorAll('audio')[0])
 const green = new Button(document.querySelector('#green'), 'G', document.querySelectorAll('audio')[1])
