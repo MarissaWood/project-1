@@ -13,6 +13,11 @@ let soundGreen = document.querySelectorAll('audio')[1]
 let soundYellow = document.querySelectorAll('audio')[2]
 let soundBlue = document.querySelectorAll('audio')[3]
 let soundPsycho = document.querySelectorAll('audio')[4]
+// alien sounds 
+let alienGreen = document.querySelectorAll('audio')[5]
+let alienRed = document.querySelectorAll('audio')[6]
+let alienYellow = document.querySelectorAll('audio')[7]
+let alienBlue = document.querySelectorAll('audio')[8]
 
 // button to start or restart game in different modes and place into an array
 startButtons = []
@@ -28,6 +33,7 @@ function activateStart () {
 
 activateStart()
 
+//function to deactivate other gae start buttons for 5 seconds after one is pushed
 function deactivate () {
   startButtons[0].removeEventListener('click', impact)
   startButtons[1].removeEventListener('click', alienMode)
@@ -61,32 +67,33 @@ function removeTransition (e) {
 }
 
 buttons.forEach(button => button.addEventListener('transitionend', removeTransition))
+// function to play each button & allow repeat play before soundclip's full runtime
+function play (color) {
+  color.currentTime = 0
+  color.play()
+}
 
 function greenClick (e) {
   playerPattern.push('G')
-  soundGreen.currentTime = 0
-  soundGreen.play()
+  play(soundGreen)
   lightUp(e)
 }
 
 function redClick (e) {
   playerPattern.push('R')
-  soundRed.currentTime = 0
-  soundRed.play()
+  play(soundRed)
   lightUp(e)
 }
 
 function yellowClick (e) {
   playerPattern.push('Y')
-  soundYellow.currentTime = 0
-  soundYellow.play()
+  play(soundYellow)
   lightUp(e)
 }
 
 function blueClick (e) {
   playerPattern.push('B')
-  soundBlue.currentTime = 0
-  soundBlue.play()
+  play(soundBlue)
   lightUp(e)
 }
 
@@ -95,45 +102,29 @@ function lightUpPlay () {
   if (levelPattern[i] === 'R') {
     setTimeout(function () {
       red.classList.add('clicked')
-      soundRed.currentTime = 0
-      soundRed.play()
-    }, (i * 1000 + 10))
-    setTimeout(function () {
-      red.classList.remove('clicked')
-    }, (i + 1) * 1000 - 100)
+      play(soundRed)
+    }, (i * 800 + 5))
   }// closes red
 
   if (levelPattern[i] === 'G') {
     setTimeout(function () {
       green.classList.add('clicked')
-      soundGreen.currentTime = 0
-      soundGreen.play()
-    }, (i * 1000 + 10))
-    setTimeout(function () {
-      green.classList.remove('clicked')
-    }, (i + 1) * 1000 - 100)
+      play(soundGreen)
+    }, (i * 800 + 5))
   }// closes green
 
   if (levelPattern[i] === 'Y') {
     setTimeout(function () {
       yellow.classList.add('clicked')
-      soundYellow.currentTime = 0
-      soundYellow.play()
-    }, (i * 1000 + 10))
-    setTimeout(function () {
-      yellow.classList.remove('clicked')
-    }, (i + 1) * 1000 - 100)
+      play(soundYellow)
+    }, (i * 800 + 5))
   }// closes yellow
 
   if (levelPattern[i] === 'B') {
     setTimeout(function () {
       blue.classList.add('clicked')
-      soundBlue.currentTime = 0
-      soundBlue.play()
-    }, (i * 1000 + 10))
-    setTimeout(function () {
-      blue.classList.remove('clicked')
-    }, (i + 1) * 1000 - 100)
+      play(soundBlue)
+    }, (i * 800 + 5))
   }// closes blue
 }// closes lightUpPlay
 
@@ -279,7 +270,6 @@ function ascensionMode () {
 // futuregame changes:
 // change out the sounds for each mode
 // make the notes play faster in ascension mode
-// disable mode buttons for 5 seconds after they are pushed
 // add the option for a different number of notes in impact mode and alien mode
 // make the full songs play after level 20 ???
 
@@ -300,6 +290,6 @@ function checkAlien () {
     }
     document.querySelector('.level-counter').innerHTML = level
     newPattern()
-    setTimeout(startGame, 1500)
+    setTimeout(startGame, 1100)
   }
 }// closes checkAlien function
