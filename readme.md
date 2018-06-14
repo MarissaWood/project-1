@@ -45,12 +45,7 @@ If you want to install this game locally, simply fork and clone the repo and ope
 
 The game can also be accessed at [https://marissawood.github.io/project-1/](https://marissawood.github.io/project-1/) 
 
-## Unsolved problems:
-If a player pushes the game mode buttons several times, a new pattern is generated and played.  If this happens is quick succession, the patterns overlap and the play can't tell which one is the current pattern that the game will check.
-
 ## Future features:
 I plan to expand on these game modes.  Each mode is named after a Rezz song, so I plan on switching out the sounds the buttons make for each mode based on the song.  Also, if I can get permission, I would like to have the full song play if the player gets to level 20.
 
-I plan to add easy-medium-hard settings for Impact Mode and Alien.  Easy with keep the pattern to four buttons each level, medium will increase it to seven and hard will increase it to ten. 
-
-I also plan to deactivate the game start buttons for five seconds after one is pushed to prevent overlapping patterns.  
+I plan to add easy-medium-hard settings for Impact Mode and Alien.  Easy with keep the pattern to four buttons each level, medium will increase it to seven and hard will increase it to ten.  
