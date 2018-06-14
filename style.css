@@ -6,6 +6,7 @@ body {
     flex-direction: column;
     color: white;
     font-family: 'Courier New', Courier, monospace;
+    text-align: center;
 }
 
 h1, h2 {
@@ -207,7 +208,11 @@ ul.icons {
     background: #ff6600;
     color: white;
 }
-#myBtn {
-    display: inline;
-    width: 200px;
+
+.hint-buttons {
+    display: flex;
+    justify-content: center;
+}
+#hint {
+    width: 100px;
 }

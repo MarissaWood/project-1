@@ -43,6 +43,15 @@
 <audio data-key="bl" src="./sounds/Space-note-7th.wav"></audio>
 <audio src="./sounds/psycho-sample.wav"></audio>
 
+<div id="alien-hint" style="color: black;">Alien Mode: repeat the pattern backwards</div>
+<div class="hint-buttons">
+    <button onclick="hint()" id="hint">👽 Hint</button>
+</div>
+<script>
+function hint() {
+    document.querySelector('#alien-hint').style.color='white'
+}
+</script>
 <footer id="footer">        
     <ul class="icons">
         <li>check out the developer: </li>
@@ -52,13 +61,7 @@
         <li><a href="https://github.com/MarissaWood" class="fa fa-github"></a></li>
     </ul>
 </footer>
-<button onclick="myFunction()" id="myBtn">Do not push this button</button>
 
-<script>
-function myFunction() {
-    document.body.innerHTML = "I told you not to push the button"  
-}
-</script>
     <script src="simon.js"></script>
 </body>
 </html>
