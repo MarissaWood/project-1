@@ -100,6 +100,7 @@ function blueClick(e) {
 }
 
 function lightUpPlay() {
+  document.querySelector(".panel-3").classList.remove("success");
   // light up the correct tile
   if (levelPattern[i] === "R") {
     setTimeout(function() {
@@ -189,6 +190,7 @@ function check() {
   j += 1;
   if (levelPattern.length === playerPattern.length) {
     level += 1;
+    document.querySelector(".panel-3").classList.add("success"); // light up the game box
     if (level === 5) {
       document.querySelector(".panel-1").style.background =
         "url('./images/REZZ_HandRed.png')";
@@ -231,21 +233,28 @@ function restart() {
   buttons.forEach(function(button) {
     button.addEventListener("click", check);
   });
+  // unhighlight the previous mode button
+  document.querySelector("#impact").classList.remove("mode");
+  document.querySelector("#alien").classList.remove("mode");
+  document.querySelector("#ascension").classList.remove("mode");
 }
 
-function impact() {
+function impact(e) {
   n = 4;
   newPattern();
   ascension = false;
   restart();
   startGame();
   setTimeout(deactivate, 10);
+  e.target.classList.add("mode");
 }
 
-function alienMode() {
+function alienMode(e) {
   for (let y = 0; y < 4; y++) {
     document.querySelectorAll(".button")[y].style.background = "black";
   }
+  document.querySelector("#impact").classList.remove("mode");
+  document.querySelector("#ascension").classList.remove("mode");
   document.querySelector(".panel-3").style.background =
     "linear-gradient(black, green, black)";
   document.querySelector(".panel-1").style.background =
@@ -274,9 +283,10 @@ function alienMode() {
   });
   startGame();
   setTimeout(deactivate, 10);
+  e.target.classList.add("mode");
 }
 
-function ascensionMode() {
+function ascensionMode(e) {
   n = 1;
   newPattern();
   ascension = true;
@@ -284,6 +294,7 @@ function ascensionMode() {
   restart();
   startGame();
   setTimeout(deactivate, 10);
+  e.target.classList.add("mode");
 }
 
 // futuregame changes:
@@ -304,6 +315,8 @@ function checkAlien() {
   }
   j += 1;
   if (levelPattern.length === playerPattern.length) {
+    // show success
+    document.querySelector(".panel-3").classList.add("success");
     level += 1;
     if (level === 10) {
       document.body.style.background = "url('./images/swirl-small.png')";
