@@ -287,7 +287,7 @@ function alienMode(e) {
 }
 
 function ascensionMode(e) {
-  n = 1;
+  n = 0;
   newPattern();
   ascension = true;
   level = 1;
