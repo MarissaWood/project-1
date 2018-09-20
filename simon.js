@@ -206,10 +206,12 @@ function check() {
   }
 } // closes check function
 
+// easter egg: if player presses the center button, a sample from Rezz's song, psycho plays
 function psycho() {
   soundPsycho.play();
 }
 
+// restart the game after failing:
 function restart() {
   level = 1;
   document.querySelector(".level-counter").innerHTML = level;
@@ -239,6 +241,7 @@ function restart() {
   document.querySelector("#ascension").classList.remove("mode");
 }
 
+// impact is the normal game mode. the player must repeat the pattern exactly as it is played
 function impact(e) {
   n = 4;
   newPattern();
@@ -253,6 +256,7 @@ function alienMode(e) {
   for (let y = 0; y < 4; y++) {
     document.querySelectorAll(".button")[y].style.background = "black";
   }
+  // css styling changes for alien mode
   document.querySelector("#impact").classList.remove("mode");
   document.querySelector("#ascension").classList.remove("mode");
   document.querySelector(".panel-3").style.background =
@@ -286,6 +290,7 @@ function alienMode(e) {
   e.target.classList.add("mode");
 }
 
+// ascension boolean turned to true and game levels reset
 function ascensionMode(e) {
   ascension = true;
   n = 0;
@@ -297,12 +302,7 @@ function ascensionMode(e) {
   e.target.classList.add("mode");
 }
 
-// futuregame changes:
-// change out the sounds for each mode
-// make the notes play faster in ascension mode
-// add the option for a different number of notes in impact mode and alien mode
-// make the full songs play after level 20 ???
-
+// alien mode checks that the pattern is played backwards
 function checkAlien() {
   if (levelPattern[n - 1 - j] !== playerPattern[j]) {
     // restart game
@@ -326,3 +326,9 @@ function checkAlien() {
     setTimeout(startGame, 1100);
   }
 } // closes checkAlien function
+
+// futuregame changes:
+// change out the sounds for each mode
+// make the notes play faster in ascension mode
+// add the option for a different number of notes in impact mode and alien mode
+// make the full songs play after level 20 ???
